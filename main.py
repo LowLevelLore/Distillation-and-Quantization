@@ -1,4 +1,5 @@
 from fastapi import FastAPI  # type: ignore
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel  # type: ignore
 from transformers import BertTokenizer, BertModel, DistilBertModel, DistilBertTokenizer  # type: ignore
 import torch  # type: ignore
@@ -189,10 +190,19 @@ class QDBertRequest(BaseRequest):
 
 app = FastAPI()
 
+origins = ["http://172.30.240.1:5500/", "*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.post("/classify/bert/")
 async def bert_classify(item: BertRequest):
-    print(item.pipeline(item.para))
     return {"prediction": item.pipeline(item.para)}
 
 
