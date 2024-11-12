@@ -8,7 +8,7 @@
 
 ## About
 
-In this project we explored about distillation and quantization of various languae models. We finetuned BERT for AI content detection. Then this **"Finetuned"** underwent knowledege distillation to reduce the size and the inference time of the model. Even after distillation the models were observed to be heavy enough, so the need of quantization arose. Then we used dynamic quantization to further make our model memory efficient and faster. We converted the weights from fp32 to qint8, to achieve this. 
+In this project we explored about distillation and quantization of various languae models. We finetuned BERT for AI content detection. Then this **"Finetuned"** underwent knowledege distillation to reduce the size and the inference time of the model. Even after distillation the models were observed to be heavy enough, so the need of quantization arose. Then we used dynamic quantization to further make our model memory efficient and faster. We converted the weights from fp32 to qint8, to achieve this.
 
 ## Getting Started
 
@@ -66,7 +66,7 @@ pipenv run pip install torch torchvision torchaudio --index-url https://download
 Deploying the models, with their API's
 
 ```
-uvicorn main:app --host 0.0.0.0
+uvicorn main:app --host localhost --port 8080
 ```
 
 End with an example of getting some data out of the system or using it for a little demo.
