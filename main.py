@@ -190,11 +190,9 @@ class QDBertRequest(BaseRequest):
 
 app = FastAPI()
 
-origins = ["http://172.30.240.1:5500/", "*"]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*", "http://172.30.240.1:5500"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
